@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Mélodies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfcf8;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            border-bottom: 2px solid #ccc;
+            padding: 0.5em;
+        }
+
+        nav a {
+            margin: 0 1em;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: auto;
+            padding: 2em;
+        }
+
+        .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .song-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            width: calc(33.333% - 1em);
+            background-color: #fff;
+        }
+
+        .song-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .song-item h3 {
+            margin: 0;
+            padding: 0.5em;
+            font-size: 1.2rem;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .song-item p {
+            padding: 0.5em;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .song-item button {
+            display: block;
+            width: 100%;
+            padding: 0.5em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .song-item button:hover {
+            background-color: #555;
+        }
+
+        .song-details {
+            display: none;
+            margin-top: 2em;
+            padding: 1em;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .song-details.active {
+            display: inline-block;
+            margin: 0.5em; 
+        }
+
+        .song-details h2 {
+            margin-top: 0;
+        }
+
+        .audio-player {
+            margin-top: 1em;
+        }
+
+        footer {
+            margin-top: 2em;
+            text-align: center;
+            padding: 1em;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Les Mélodies </h1>
+    </header>
+    <nav>
+      <a onclick="scrollToSection('musique')">Musique</a>
+      <a onclick="scrollToSection('details')">Description</a>
+      <a onclick="openExternalLink()">Liens</a>
+  </nav>
+    
+    <div class="container">
+        <section id="musique">
+            <h2>Liste des chansons</h2>
+            <div class="song-list">
+            
+                <div class="song-item">
+                    <img src="https://christielaume.com/wp-content/uploads/2021/02/Screen-Shot-2021-02-19-at-10.44.38-AM-1.png" alt="Edith Piaf">
+                    <h3>L'hymne à l'amour - Edith Piaf</h3>
+                    <p>
+                      Hymne à l'amour est une chanson d'Édith Piaf sortie en 1950, dont les paroles ont été écrites par Édith Piaf et la musique par Marguerite Monnot.
+                      Devenue un classique de la chanson française, elle compte parmi les plus grands succès d’Édith Piaf.J'ai découvert cette chanson après avoir regardé la cérémonie d'ouverture des JO 2024. Bien qu'il pleuvait ce jour-là, 
+                      dès que Céline Dion a commencé à chanter, une émotion profonde m'a envahie, et j'ai vraiment ressenti le message d'amour transmis à travers cette chanson. C'est probablement l'une des chansons que je pourrais écouter encore et encore sans jamais m'en lasser
+                      .</p>
+                    <button onclick="showDetails('edith1')">Détails</button>
+                </div>
+
+                <div class="song-item">
+                    <img src="https://cdn-images.dzcdn.net/images/cover/72a9d445106003d851a715a66edb76ff/0x1900-000000-80-0-0.jpg" alt="Laurie Darmon">
+                    <h3>L'exil - Laurie Darmon</h3>
+                    <p>La chanson parle de la douleur de la séparation, de la perte de la patrie et de l’exil. Elle évoque la nostalgie du pays natal tout en transmettant un message d’espoir pour la paix et la réunification.
+
+                      Une œuvre émouvante qui reflète l’histoire personnelle d’Enrico Macias, contraint à l’exil d’Algérie vers la France, et qui symbolise le sentiment d’arrachement ressenti par de nombreux exilés.
+                      
+                      J'ai écouté cette chanson depuis un an parce que je ressens une connexion entre moi et elle. Je ressens l'émotion que l'auteur a transmise dans cette chanson, ainsi que l'amour pour sa grand-mère décédée..</p>
+                    <button onclick="showDetails('laurie')">Détails</button>
+                </div>
+
+                <div class="song-item">
+                    <img src="https://www.francetvinfo.fr/pictures/lKd_zLJgCrBg6ni_Udk-QYG9J9U/1200x1200/2024/10/23/sans-titre-67188c838d8a1821468218.jpg" alt="Charles Aznavour">
+                    <h3>La bohème - Charles Aznavour</h3>
+                    <p>La Bohème est une chanson d'amour française, composée par Charles Aznavour et écrite par Jacques Plante, sur le thème de la vie de bohème, pour l'opérette Monsieur Carnaval de Charles Aznavour de 1965. 
+                      Ce single1 extrait de son 17e album La bohème (album) (en) de 1966, est un des nombreux tubes internationaux emblématiques de son important répertoire, de sa carrière, et un des classiques de la chanson française, et des chansons sur Paris.</p>
+                    <button onclick="showDetails('aznavour')">Détails</button>
+                </div>
+
+                <div class="song-item">
+                    <img src="https://cdn-s-www.ledauphine.com/images/2773574D-4101-47F0-9C3F-5556068995F9/NW_raw/le-2-avril-1991-en-concert-au-palais-des-sports-de-grenoble-photo-archives-le-dl-1579992931.jpg" alt="Michel Sardou">
+                    <h3>La maladie d'amour - Michel Sardou</h3>
+                    <p>Il s'agit de la quatrième chanson la plus vendue de l'artiste, puisque le titre s'est écoulé à plus d'un million d'exemplaires, derrière Les Lacs du Connemara (1981), En chantant (1978) et Dix ans plus tôt (1977). 
+                      Elle est d'ailleurs restée au sommet du hit-parade pendant dix semaines1. Sa mélodie utilise la ligne harmonique du Canon de Pachelbel.
+                      
+                      Succès populaire considérable dès sa sortie, cette chanson sera ainsi présente dans la plupart des tours de chant du chanteur. 
+                      Les concerts Olympia 75, Olympia 76, Palais des congrès 78, Palais des congrès 81, Vivant 83, Bercy 91, Bercy 98, Live 2005 au Palais des sports, Zénith 2007, 
+                      Live 2013 - Les grands moments à l'Olympia et La Dernière Danse en sont le témoignage. Michel Sardou modifiera le rythme de la chanson au fil du temps dont il baissera le tempo. 
+                      Sardou enregistre une version espagnole de la chanson en 1981 sur des paroles de Rafael Gayoso Piñeiro, intitulée El mal de amor et parue sur son album Canta en español.
+                    </p>
+                    <button onclick="showDetails('sardou')">Détails</button>
+                </div>
+
+                <div class="song-item">
+                    <img src="https://www.melody.tv/wp-content/uploads/2022/06/Mireille-MATHIEU-%C2%A9Marlyse-Press-Photo.jpg" alt="Mireille Mathieu">
+                    <h3>Bravo tu as gagné - Mireille Mathieu</h3>
+                    <p>C'est une adaptation française du titre du groupe ABBA The Winner Takes It All, sur des paroles de Charles Level.
+                      Cette version française est reprise par Clara Luciani en 2022 sur Cœur encore, la réédition de son album Cœur.
+                      Une autre chanson que l’on pourrait considérer comme similaire en termes de genre et de style musical lyrique. Au début, je l’écoutais simplement pour apprendre le français, mais peu à peu, je suis tombée sous son charme, 
+                      car elle m’a apporté de la motivation grâce à sa mélodie et à la subtilité des nuances dans ses paroles. La chanson a été reprise avec beaucoup de succès par Clara Luciani, et pour être honnête, j’aime davantage cette version que l’originale. 
+                      En effet, elle a su adoucir certains aspects un peu trop intenses de la chanson pour la rendre plus agréable et facile à écouter.
+                    </p>
+                    <button onclick="showDetails('mathieu')">Détails</button>
+                </div>
+
+                <div class="song-item">
+                  <img src="https://www.album-online.com/photos/prev/M2I3OTk1MA/album_alb4670366.jpg" alt ="Edith Piaf">
+                  <h3>Padam, Padam - Edith Piaf </h3>
+                  <p>Padam, padam... est une chanson d'amour d'Édith Piaf, écrite par Henri Contet et composée par Norbert Glanzberg, enregistrée en single en 1951 avec l'orchestre de Robert Chauvigny, et intégrée à son album Récital À l'Olympia enregistré à l'Olympia de Paris de 1955. 
+                    Un des grands succès international de son répertoire et de la chanson française.Norbert Glanzberg et Henri Contet composent et écrivent cette chanson réaliste de la vie d'Édith Piaf sur un air de flonflons de valse musette tourbillonnante, à la fois triste, émouvante, 
+                    douloureuse, heureuse, joyeuse, et enflammée, sur le thème des nombreux souvenirs émotionnels et sentimentaux obsédants de ses anciens amants et histoires d'amour passées et déçues de sa vie.Padam fait également allusion à Paname (Paris en argot parisien) de sa vie parisienne.
+                  </p>
+                  <button onclick="showDetails('edith2')">Détails</button>
+              </div>
+            </div>
+        </section>
+
+
+        <section id="details" class="song-details">
+          <h2>Détails de la chanson</h2>
+          <p id="song-description">Sélectionnez une chanson pour voir les détails.</p>
+          <audio id="audio-player" class="audio-player" controls>
+              <source id="audio-source" src="" type="audio/mpeg">
+              Votre navigateur ne supporte pas l'élément audio.
+          </audio>
+          <div>
+            <button id="pause-button">Pause</button>
+            <button id="stop-button">Stop</button>
+        </div>
+        </section>
+
+
+      <section id="suggestions">
+          <h2>Proposez une chanson</h2>
+          <form action="/submit_suggestion" method="POST">
+              <label for="song-title">Titre de la chanson :</label>
+              <input type="text" id="song-title" name="song-title" required>
+
+              <label for="artist-name">Nom de l'artiste :</label>
+              <input type="text" id="artist-name" name="artist-name" required>
+
+              <label for="message">Votre message (facultatif) :</label>
+              <textarea id="message" name="message" rows="4" placeholder="Pourquoi aimez-vous cette chanson ?"></textarea>
+
+              <button type="submit">Envoyer la suggestion</button>
+          </form>
+      </section>
+  </div>
+
+    <footer>
+        <p>Crédits: Images et audios © leurs auteurs respectifs.</p>
+    </footer>
+
+
+    <script>
+         const details = {
+            edith1: {
+                description: "Cette chanson parle d'un amour profond et éternel.",
+                audio: "audio/Edith Piaf - Hymne à l'amour-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/wcx4UVMW244?si=EQywED0dZGFEm6L8",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+            laurie: {
+                description: "Une chanson émouvante sur l'exil et la perte.",
+                audio: "audio/Laurie Darmon - L'exil (clip officiel)-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/x_Su8EKH_ls?si=xvI4EcJxSiP9MUkI",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+            aznavour: {
+                description: "Une célébration de la jeunesse et de la bohème.",
+                audio: "audio/Charles Aznavour - La bohème (Official Lyrics Video)-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/fVfnEyLOkrM?si=o5CFQ3rckhdRIl3z",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+            sardou: {
+                description: "Un hymne à l'amour et à la passion.",
+                audio: "audio/Michel Sardou - La maladie damour (Audio Officiel)-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/6YJ_V5V9Zek?si=Q5tkt1KEJnoryyrp",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+            mathieu: {
+                description: "Une déclaration forte et triomphante.",
+                audio: "audio/Mireille Mathieu - Bravo tu as gagné (1981)-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/ThcUlL975Nw?si=G2rWHO9Bhs6aRTh3",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+            edith2: {
+                description: "Une chanson remplie de poésie et d'émotion.",
+                audio: "audio/Edith Piaf - Padam, padam (Audio officiel)-[AudioTrimmer.com].mp3",
+                lien: "https://youtu.be/xXqLj7X1WDU?si=Ojn91TMcATexCcWV",
+                debut: 0, // Commence à 0 seconde
+                duree: 15 // Joue pendant 15 secondes
+            },
+    
+      };
+
+
+      const lecteurAudio = document.getElementById('audio-player');
+      const pauseButton = document.getElementById('pause-button');
+      const stopButton = document.getElementById('stop-button');
+
+
+    function showDetails(chanson) {
+    const detailSection = document.getElementById('details');
+    const description = document.getElementById('song-description');
+    const audioSource = document.getElementById('audio-source');
+    const audioPlayer = document.getElementById('audio-player');
+
+    
+    description.textContent = details[chanson].description;
+    audioSource.src = details[chanson].audio;
+
+    detailSection.classList.add('active'); 
+    audioPlayer.load();
+    audioPlayer.currentTime = details[chanson].debut;
+    audioPlayer.play();
+
+    
+    document.querySelectorAll('.song-details.active').forEach(detail => {
+        detail.classList.remove('active');
+    });
+}
+
+
+pauseButton.addEventListener('click', () => {
+    lecteurAudio.pause();
+});
+
+
+stopButton.addEventListener('click', () => {
+    lecteurAudio.pause();
+    lecteurAudio.currentTime = 0;
+});
+</script> 
+
+</body>
+</html>
